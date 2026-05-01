@@ -57,7 +57,7 @@ export default function ProductManager() {
   // Handle deleting a product
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
-    
+
     try {
       await api.delete(`/api/v1/products/${id}`);
       fetchProducts(); // Refresh list after deletion
@@ -69,11 +69,11 @@ export default function ProductManager() {
   return (
     <div style={{ maxWidth: "600px", margin: "40px auto", fontFamily: "sans-serif" }}>
       <h2>Product Manager</h2>
-      
+
       {/* --- FORM SECTION --- */}
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px", padding: "15px", border: "1px solid #ccc", borderRadius: "5px" }}>
         <h3>{editingId ? "Edit Product" : "Add New Product"}</h3>
-        
+
         <div style={{ marginBottom: "10px" }}>
           <label style={{ display: "block", marginBottom: "5px" }}>Product Name:</label>
           <input
@@ -84,7 +84,7 @@ export default function ProductManager() {
             style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
           />
         </div>
-        
+
         <div style={{ marginBottom: "15px" }}>
           <label style={{ display: "block", marginBottom: "5px" }}>Category:</label>
           <input
@@ -95,13 +95,13 @@ export default function ProductManager() {
             style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
           />
         </div>
-        
+
         <button type="submit" style={{ padding: "10px 15px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "3px", cursor: "pointer" }}>
           {editingId ? "Update Product" : "Save Product"}
         </button>
         {editingId && (
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={() => { setEditingId(null); setFormData({ product: "", category: "" }); }}
             style={{ marginLeft: "10px", padding: "10px 15px", backgroundColor: "#6c757d", color: "white", border: "none", borderRadius: "3px", cursor: "pointer" }}
           >
